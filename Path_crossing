@@ -1,0 +1,31 @@
+class Solution {
+public:
+    bool isPathCrossing(string path) {
+         unordered_set<string> visited;
+        int x = 0, y = 0;
+
+        // Insert starting position (0,0)
+        visited.insert("0,0");
+
+        // Iterate through the path
+        for (char dir : path) {
+            if (dir == 'N') y++;
+            else if (dir == 'S') y--;
+            else if (dir == 'E') x++;
+            else if (dir == 'W') x--;
+
+            // Convert current position to string format
+            string position = to_string(x) + "," + to_string(y);
+
+            // If we have visited this position before, return true
+            if (visited.count(position)) return true;
+
+            // Mark this position as visited
+            visited.insert(position);
+        }
+        return false;
+    }
+    
+};
+
+
