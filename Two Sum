@@ -1,0 +1,18 @@
+#include<unordered_map>
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+       unordered_map<int,int>freq;
+       int count=0;
+       for(int i=0;i<nums.size();i++){
+        int comp= target-nums[i];
+        if(freq.find(comp)!=freq.end()){
+           return {freq[comp],i};
+
+        }
+        freq[nums[i]]=i;
+        
+       } 
+       return {};
+    }
+};
